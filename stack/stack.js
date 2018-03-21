@@ -1,15 +1,15 @@
-function Stack(list = []) {
-    this.list = list;
+function Stack(arr = []) {
+    list = arr;
 
-    this.push = (i) => this.list.push(i);
-    this.pop = () => this.list.pop();
+    this.push = (i) => list.push(i);
+    this.pop = () => list.pop();
 }
 
 const myStack = new Stack();
 
-myStack.push(1);
-myStack.push(2);
-myStack.push(4);
-myStack.push(5);
+myStack.push('a');
+myStack.push('b');
 myStack.pop();
+myStack.push(5);
+myStack.push('c');
 myStack.pop();
