@@ -1,0 +1,13 @@
+main {
+    width: 400px;
+    margin: 40px auto;
+    text-align: center;
+}
+main h1 {
+    color: #f55;
+}
+
+.center {
+    display: flex;
+    justify-content: space-between;
+}
