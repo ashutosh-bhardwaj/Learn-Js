@@ -11,3 +11,7 @@ main h1 {
     display: flex;
     justify-content: space-between;
 }
+
+.margin-bottom-60 {
+    margin-bottom: 60px;
+}

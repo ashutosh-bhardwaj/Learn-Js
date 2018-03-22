@@ -5,35 +5,85 @@ const ROWS = [
     ['Mark', 'Zuckerberg', '@markzuckerberg'],
     ['Bill', 'Gates', '@billgates'],
     ['Richard', 'Henricks', '@richard'],
+    ['Ashutosh', 'Musk', '@elonmusk'],
+    ['Vaibhav', 'Zuckerberg', '@markzuckerberg'],
+    ['Shubham', 'Gates', '@billgates'],
+    ['Satyam', 'Henricks', '@richard'],
+    ['Shivam', 'Musk', '@elonmusk'],
+    ['Sundarm', 'Zuckerberg', '@markzuckerberg'],
+    ['Mike', 'Gates', '@billgates'],
+    ['Ross', 'Henricks', '@richard'],
+    ['Shivam', 'Musk', '@elonmusk'],
+    ['Rossy', 'Zuckerberg', '@markzuckerberg'],
+    ['Sweety', 'Gates', '@billgates'],
+    ['Ridhima', 'Henricks', '@richard'],
 ];
+let start = 0;
 
-function updateTableHead(tableHead, list) {
-    const head = document.querySelector(tableHead);
-    const row = createHead(list);
-    head.innerHTML = row;
+function TableMaker(id, data) {
+    const { head , rows } = data;  
+    const NUMBERS_OF_ROWS = 4;
+    const MAX = rows.length;
+    const MIN = 0;
+
+
+    this.render = () => {
+        const panel = ` <div class="center margin-bottom-60">
+                        <button class="btn btn-primary" onclick="myTable.previous()">
+                            Previous
+                        </button>
+                        <button class="btn btn-primary" onclick="myTable.next()">
+                            Next
+                        </button>
+                    </div>`;
+
+        const tableHead = createTableHead(head);
+        const tableBody = createTableBody(rows.slice(start, start + NUMBERS_OF_ROWS));
+        const table = `<table class="table table-striped">
+                            <thead> ${tableHead} </thead>
+                            <tbody> ${tableBody} </tbody>
+                        </table>`;
+        const div = document.getElementById(id);
+        div.innerHTML = table + panel;
+    } 
+
+    this.next = () => {
+        console.log('Clicked Next');
+        if (start < MAX -  NUMBERS_OF_ROWS) {
+            start += NUMBERS_OF_ROWS;
+        } else {
+            console.log(`Can't go beyond ${MAX}`);
+        }
+        this.render();
+    }
+
+    this.previous = () => {
+        console.log('Clicked Previous');
+        if (start -  NUMBERS_OF_ROWS  >= MIN) {
+            start -= NUMBERS_OF_ROWS;
+        } else {
+            console.log(`Can't go beyond ${MIN}`);
+        }
+        this.render();
+    }
+
+    this.render();
 }
 
-function createHead(list) {
+
+function createTableHead(list) {
     return (`
     <tr>
         <th scope="col">#</th>
-        <th scope="col">${list[0]}</th>
-        <th scope="col">${list[1]}</th>
-        <th scope="col">${list[2]}</th>
+        ${list.map( v => `<th scope="col">${v}</th>`)}
     </tr>
     `);
-}
-
-function updateTableBody(tableId, list) {
-    const tableBody = document.querySelector(tableId);
-    const rows = createTableBody(list);
-    tableBody.innerHTML = rows;
 }
 
 function createTableBody(list) {
     let rows = '';
     for(i in list) {
-        rows += createRow(i, list[i]);
+        rows += createRow(start + Number(i), list[i]);
     }
     return rows;
 }
@@ -42,12 +92,14 @@ function createRow(index, values) {
    return (
     `<tr>
         <th scope="row">${index}</th>
-        <td>${values[0]}</td>
-        <td>${values[1]}</td>
-        <td>${values[2]}</td>
+        ${values.map((v) => `<td>${v}</td>`)}
     </tr>`
     );
 }
 
-updateTableHead('#table-head', HEADINGS);
-updateTableBody('#table-body', ROWS);
+const data = {
+    head: HEADINGS,
+    rows: ROWS
+};
+
+const myTable = new TableMaker('table', data);
