@@ -18,21 +18,23 @@ const ROWS = [
     ['Sweety', 'Gates', '@billgates'],
     ['Ridhima', 'Henricks', '@richard'],
 ];
+
+
 let start = 0;
 
-function TableMaker(id, data) {
+function TableMaker(id, data, num, elem) {
     const { head , rows } = data;  
-    const NUMBERS_OF_ROWS = 4;
+    const NUMBERS_OF_ROWS = num;
     const MAX = rows.length;
     const MIN = 0;
 
 
     this.render = () => {
         const panel = ` <div class="center margin-bottom-60">
-                        <button class="btn btn-primary" onclick="myTable.previous()">
+                        <button class="btn btn-primary" onclick="${elem}.previous()">
                             Previous
                         </button>
-                        <button class="btn btn-primary" onclick="myTable.next()">
+                        <button class="btn btn-primary" onclick="${elem}.next()">
                             Next
                         </button>
                     </div>`;
@@ -102,4 +104,5 @@ const data = {
     rows: ROWS
 };
 
-const myTable = new TableMaker('table', data);
+const myTable = new TableMaker('table', data, 5, 'myTable');
+const myTable2 = new TableMaker('table2', data, 5, 'myTable2');
