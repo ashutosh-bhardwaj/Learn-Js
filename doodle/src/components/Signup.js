@@ -109,10 +109,17 @@ class SignUpForm extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
+    Don't have an account? <Link style={link} to={routes.SIGN_UP}>Sign Up</Link>
   </p>
 );
 
 export default withRouter(SignUpPage);
 
 export { SignUpForm, SignUpLink };
+
+const link =  {
+  textDecoration: 'none',
+  fontWeight: '900',
+  color: '#333',
+  padding: '10px'
+};

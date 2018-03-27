@@ -46,24 +46,11 @@ class App extends Component {
           <Route
             exact
             path={routes.LANDING}
-            render={() => (
-              <Paper> 
-                <Link to={routes.SIGN_IN}> Sign-in </Link>
-                /
-                <SignUpLink />
-              </Paper>
-            )
-              }
+            component={NoAuth}
           />
           
           {isLoggedIn && <Route path={routes.ME} component={Me} />}
-          {!isLoggedIn && <Route path={routes.ME} render={() => (
-            <Paper> 
-              <Link to={routes.SIGN_IN}> Sign-in </Link>
-              /
-              <SignUpLink />
-            </Paper>
-          )} />}
+          {!isLoggedIn && <Route path={routes.ME} component={NoAuth} />}
         </MuiThemeProvider>
       </Router>
     );
@@ -71,3 +58,28 @@ class App extends Component {
 }
 
 export default App;
+
+const NoAuth = () => (
+  <Paper 
+    zDepth={2}
+    style={styles.container}
+  > 
+    Have an account <Link style={styles.link}to={routes.SIGN_IN}> Sign-in </Link>
+    <SignUpLink />
+  </Paper>
+);
+
+const styles = {
+  container: {
+    width: '100%',
+    margin: '0 auto',
+    padding: '40px',
+    fontSize: '20px'
+  },
+  link: {
+    textDecoration: 'none',
+    fontWeight: '900',
+    color: '#333',
+    padding: '10px'
+  },
+};
