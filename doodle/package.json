@@ -1,0 +1,29 @@
+{
+  "name": "doodle",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^4.12.0",
+    "global": "^4.3.2",
+    "material-ui": "^0.20.0",
+    "prettier": "^1.11.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write 'src/**/*.js'"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-equimper": "^2.2.1",
+    "eslint-config-prettier": "^2.3.0",
+    "prettier": "^1.5.3"
+  }
+}
