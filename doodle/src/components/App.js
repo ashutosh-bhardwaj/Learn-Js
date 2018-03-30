@@ -50,7 +50,7 @@ class App extends Component {
           />
           
           {isLoggedIn && <Route path={routes.ME} component={Me} />}
-          {!isLoggedIn && <Route path={routes.ME} component={NoAuth} />}
+          {!isLoggedIn && <Route path={routes.LANDING} component={NoAuth} />}
         </MuiThemeProvider>
       </Router>
     );

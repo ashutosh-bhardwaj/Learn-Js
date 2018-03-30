@@ -22,33 +22,38 @@ const ROWS = [
 
 let start = 0;
 
+function TableMaker() {
+
+}
+
+
 function TableMaker(id, data, num, elem) {
     const { head , rows } = data;  
     const NUMBERS_OF_ROWS = num;
     const MAX = rows.length;
     const MIN = 0;
-
-
+    const _this = this
     this.render = () => {
+        console.log(elem);
         const panel = ` <div class="center margin-bottom-60">
-                        <button class="btn btn-primary" onclick="${elem}.previous()">
-                            Previous
-                        </button>
-                        <button class="btn btn-primary" onclick="${elem}.next()">
-                            Next
-                        </button>
-                    </div>`;
-
+        <button class="btn btn-primary" onclick="${elem}.previous()">
+        Previous
+        </button>
+        <button class="btn btn-primary" onclick="${elem}.next()">
+        Next
+        </button>
+        </div>`;
+        
         const tableHead = createTableHead(head);
         const tableBody = createTableBody(rows.slice(start, start + NUMBERS_OF_ROWS));
         const table = `<table class="table table-striped">
-                            <thead> ${tableHead} </thead>
-                            <tbody> ${tableBody} </tbody>
-                        </table>`;
+        <thead> ${tableHead} </thead>
+        <tbody> ${tableBody} </tbody>
+        </table>`;
         const div = document.getElementById(id);
         div.innerHTML = table + panel;
     } 
-
+    
     this.next = () => {
         console.log('Clicked Next');
         if (start < MAX -  NUMBERS_OF_ROWS) {
@@ -56,9 +61,9 @@ function TableMaker(id, data, num, elem) {
         } else {
             console.log(`Can't go beyond ${MAX}`);
         }
-        this.render();
+        this.render(this);
     }
-
+    
     this.previous = () => {
         console.log('Clicked Previous');
         if (start -  NUMBERS_OF_ROWS  >= MIN) {
@@ -66,9 +71,10 @@ function TableMaker(id, data, num, elem) {
         } else {
             console.log(`Can't go beyond ${MIN}`);
         }
-        this.render();
+        this.render(this);
     }
-
+    
+    // this.previous = this.previous.bind(this);
     this.render();
 }
 
