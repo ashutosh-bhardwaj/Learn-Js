@@ -13,7 +13,6 @@ class Home extends Component {
 
   render() {
     const phones = this.props.phones;
-    console.log(phones);
     return (
       <div>
         {phones.length === 0 ? (
@@ -27,7 +26,9 @@ class Home extends Component {
                 leftIcon={<PhoneIphone />}
                 rightIcon={<Star />}
                 secondaryText={`$ ${phone.price} ${phone.status}`}
-                onClick={() => this.props.history.push("/p/" + phone.id)}
+                onClick={() =>
+                  this.props.history.push(routes.DETAIL + "/" + phone.id)
+                }
               />
             ))}
           </List>

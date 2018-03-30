@@ -33,10 +33,10 @@ class App extends Component {
               iconStyleRight={{ padding: "10px" }}
               onRightIconButtonClick={this.handleToggleAdd}
             />
-            {this.state.add && <Redirect to="/add" />}
+            {this.state.add && <Redirect to={routes.ADD} />}
             <Route exact path={routes.HOME} component={Home} />
             <Route
-              path="/edit/:id"
+              path={routes.EDIT_ID}
               render={({ history, match }) => {
                 phone = phones
                   .filter(phone => phone.id === match.params.id * 1)
@@ -56,7 +56,7 @@ class App extends Component {
               render={({ history }) => <Add history={history} action="ADD" />}
             />
             <Route
-              path={"/p/:id"}
+              path={routes.DETAIL_ID}
               render={({ match, history }) => {
                 phone = phones
                   .filter(phone => phone.id === match.params.id * 1)

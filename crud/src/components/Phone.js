@@ -29,7 +29,7 @@ class Phone extends React.Component {
           <img
             src={require("../images/iphone.jpg")}
             alt="iphone"
-            style={{ height: "20%" }}
+            style={{ height: "100%" }}
           />
         </CardMedia>
         <CardTitle title={model} />
